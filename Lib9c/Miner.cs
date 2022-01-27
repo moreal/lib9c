@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -58,12 +59,18 @@ namespace Nekoyume.BlockChain
         public async Task<Block<NCAction>> MineBlockAsync(
             CancellationToken cancellationToken)
         {
+            var totalStopwatch = new Stopwatch();
+            var stopwatch = new Stopwatch();
+
+            totalStopwatch.Start();
+
             var txs = new HashSet<Transaction<NCAction>>();
             var invalidTxs = txs;
 
             Block<NCAction> block = null;
             try
             {
+                stopwatch.Restart();
                 IEnumerable<Transaction<NCAction>> bannedTxs = _chain.GetStagedTransactionIds()
                     .Select(txId => _chain.GetTransaction(txId))
                     .Where(tx => _bannedAccounts.Contains(tx.Signer));
@@ -71,24 +78,39 @@ namespace Nekoyume.BlockChain
                 {
                     _chain.UnstageTransaction(tx);
                 }
+                stopwatch.Stop();
+                Log.Debug(
+                    $"Unstage banned transaction finished after {stopwatch.ElapsedMilliseconds} (MineBlockAsync)");
 
                 // All miner needs proof in permissioned mining:
+                stopwatch.Restart();
                 Transaction<NCAction> proof = StageProofTransaction();
+                stopwatch.Stop();
+                Log.Debug(
+                    $"{nameof(StageProofTransaction)} finished after {stopwatch.ElapsedMilliseconds} (MineBlockAsync)");
 
                 // Proof txs have priority over other txs:
                 IComparer<Transaction<NCAction>> txPriority = GetProofTxPriority(proof);
 
+                stopwatch.Restart();
                 block = await _chain.MineBlock(
                     _privateKey,
                     DateTimeOffset.UtcNow,
                     cancellationToken: cancellationToken,
-                    append: false,
-                    txPriority: txPriority);
+                    append: true,
+                    txPriority: txPriority,
+                    maxTransactions: 80);
+                stopwatch.Stop();
+                Log.Debug(
+                    $"{nameof(_chain.MineBlock)} finished after {stopwatch.ElapsedMilliseconds} (MineBlockAsync)");
 
-                _chain.Append(block);
                 if (_swarm is Swarm<NCAction> s && s.Running)
                 {
+                    stopwatch.Restart();
                     s.BroadcastBlock(block);
+                    stopwatch.Stop();
+                    Log.Debug(
+                        $"{nameof(s.BroadcastBlock)} finished after {stopwatch.ElapsedMilliseconds} (MineBlockAsync)");
                 }
             }
             catch (OperationCanceledException)
@@ -125,6 +147,11 @@ namespace Nekoyume.BlockChain
                 }
 
             }
+
+            totalStopwatch.Stop();
+            Log.Debug(
+                $"{nameof(MineBlockAsync)} finished after {totalStopwatch.ElapsedMilliseconds}" +
+                " (MineBlockAsync)");
 
             return block;
         }
