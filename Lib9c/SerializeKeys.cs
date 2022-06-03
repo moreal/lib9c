@@ -98,6 +98,7 @@ namespace Lib9c
 
         // Stake
         public const string RateKey = "r";
+        public const string RewardTypeKey = "rt";
         public const string CancellableBlockIndexKey = "cbi";
         public const string AchievementsKey = "ach";
         public const string AmountKey = "am";

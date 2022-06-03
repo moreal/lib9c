@@ -13,10 +13,11 @@ namespace Lib9c.Tests.TableData
 
         public StakeRegularRewardSheetTest()
         {
-            const string TableContent = @"level,required_gold,item_id,rate
+            const string TableContent = @"level,required_gold,item_id,rate,type
 0,0,0,0
 1,10,400000,50
-1,10,500000,50";
+1,10,500000,50
+1,10,400000,1,fixed";
 
             _sheet = new StakeRegularRewardSheet();
             _sheet.Set(TableContent);
@@ -34,11 +35,16 @@ namespace Lib9c.Tests.TableData
             Assert.Equal(0, _sheet[0].Rewards[0].Rate);
 
             Assert.Equal(10, _sheet[1].RequiredGold);
-            Assert.Equal(2, _sheet[1].Rewards.Count);
+            Assert.Equal(3, _sheet[1].Rewards.Count);
             Assert.Equal(400000, _sheet[1].Rewards[0].ItemId);
             Assert.Equal(50, _sheet[1].Rewards[0].Rate);
+            Assert.Equal(StakeRegularRewardSheet.RewardInfo.RewardType.Arithmetic, _sheet[1].Rewards[0].Type);
             Assert.Equal(500000, _sheet[1].Rewards[1].ItemId);
             Assert.Equal(50, _sheet[1].Rewards[1].Rate);
+            Assert.Equal(StakeRegularRewardSheet.RewardInfo.RewardType.Arithmetic, _sheet[1].Rewards[1].Type);
+            Assert.Equal(400000, _sheet[1].Rewards[2].ItemId);
+            Assert.Equal(1, _sheet[1].Rewards[2].Rate);
+            Assert.Equal(StakeRegularRewardSheet.RewardInfo.RewardType.Fixed, _sheet[1].Rewards[2].Type);
         }
 
         [Theory]
