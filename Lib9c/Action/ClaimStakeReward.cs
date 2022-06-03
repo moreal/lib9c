@@ -59,7 +59,14 @@ namespace Nekoyume.Action
             var accumulatedRewards = stakeState.CalculateAccumulatedRewards(context.BlockIndex);
             foreach (var reward in rewards)
             {
-                var (quantity, _) = stakedAmount.DivRem(currency * reward.Rate);
+                var quantity = reward.Type switch
+                {
+                    StakeRegularRewardSheet.RewardInfo.RewardType.Arithmetic =>
+                        stakedAmount.DivRem(currency * reward.Rate).Quotient,
+                    StakeRegularRewardSheet.RewardInfo.RewardType.Fixed => reward.Rate,
+                    _ => throw new ArgumentOutOfRangeException()
+                };
+
                 if (quantity < 1)
                 {
                     // If the quantity is zero, it doesn't add the item into inventory.
