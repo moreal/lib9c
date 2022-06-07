@@ -61,23 +61,6 @@ namespace Nekoyume.TableData
                 RateOrCount = rateOrCount;
                 Type = type;
             }
-
-            public RewardInfo(Dictionary dictionary)
-            {
-                ItemId = dictionary[IdKey].ToInteger();
-                RateOrCount = dictionary[RateOrCountKey].ToInteger();
-                Type = dictionary.TryGetValue((Text)RewardTypeKey, out IValue value) &&
-                       RewardType.TryParse((Text)value, out RewardType result)
-                    ? result
-                    : RewardType.Arithmetic;
-            }
-            public IValue Serialize()
-            {
-                return Dictionary.Empty
-                    .Add(IdKey, ItemId.Serialize())
-                    .Add(RateOrCountKey, RateOrCount.Serialize())
-                    .Add(RewardTypeKey, Type.Serialize());
-            }
         }
 
         [Serializable]
