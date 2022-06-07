@@ -32,18 +32,18 @@ namespace Lib9c.Tests.TableData
             Assert.Equal(0, _sheet[0].RequiredGold);
             Assert.Single(_sheet[0].Rewards);
             Assert.Equal(0, _sheet[0].Rewards[0].ItemId);
-            Assert.Equal(0, _sheet[0].Rewards[0].Rate);
+            Assert.Equal(0, _sheet[0].Rewards[0].RateOrCount);
 
             Assert.Equal(10, _sheet[1].RequiredGold);
             Assert.Equal(3, _sheet[1].Rewards.Count);
             Assert.Equal(400000, _sheet[1].Rewards[0].ItemId);
-            Assert.Equal(50, _sheet[1].Rewards[0].Rate);
+            Assert.Equal(50, _sheet[1].Rewards[0].RateOrCount);
             Assert.Equal(StakeRegularRewardSheet.RewardInfo.RewardType.Arithmetic, _sheet[1].Rewards[0].Type);
             Assert.Equal(500000, _sheet[1].Rewards[1].ItemId);
-            Assert.Equal(50, _sheet[1].Rewards[1].Rate);
+            Assert.Equal(50, _sheet[1].Rewards[1].RateOrCount);
             Assert.Equal(StakeRegularRewardSheet.RewardInfo.RewardType.Arithmetic, _sheet[1].Rewards[1].Type);
             Assert.Equal(400000, _sheet[1].Rewards[2].ItemId);
-            Assert.Equal(1, _sheet[1].Rewards[2].Rate);
+            Assert.Equal(1, _sheet[1].Rewards[2].RateOrCount);
             Assert.Equal(StakeRegularRewardSheet.RewardInfo.RewardType.Fixed, _sheet[1].Rewards[2].Type);
         }
 

@@ -97,7 +97,7 @@ namespace Lib9c
         public const string RewardLevelMapKey = "rlm";
 
         // Stake
-        public const string RateKey = "r";
+        public const string RateOrCountKey = "roc";
         public const string RewardTypeKey = "rt";
         public const string CancellableBlockIndexKey = "cbi";
         public const string AchievementsKey = "ach";

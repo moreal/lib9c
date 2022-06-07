@@ -1,4 +1,4 @@
-level,required_gold,item_id,rate,type
+level,required_gold,item_id,rate_or_count,type
 0,0,0,0
 1,50,400000,10
 1,50,500000,800

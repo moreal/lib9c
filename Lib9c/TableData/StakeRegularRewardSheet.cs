@@ -23,7 +23,7 @@ namespace Nekoyume.TableData
 
             protected bool Equals(RewardInfo other)
             {
-                return ItemId == other.ItemId && Rate == other.Rate && Type == other.Type;
+                return ItemId == other.ItemId && RateOrCount == other.RateOrCount && Type == other.Type;
             }
 
             public override bool Equals(object obj)
@@ -38,34 +38,34 @@ namespace Nekoyume.TableData
             {
                 unchecked
                 {
-                    return (ItemId * 397) ^ Rate ^ Type.GetHashCode();
+                    return (ItemId * 397) ^ RateOrCount ^ Type.GetHashCode();
                 }
             }
 
             public readonly int ItemId;
-            public readonly int Rate;
+            public readonly int RateOrCount;
             public readonly RewardType Type;
 
             public RewardInfo(params string[] fields)
             {
                 ItemId = ParseInt(fields[0]);
-                Rate = ParseInt(fields[1]);
+                RateOrCount = ParseInt(fields[1]);
                 Type = fields.Length >= 3 && Enum.TryParse(fields[2], true, out RewardType type)
                     ? type
                     : RewardType.Arithmetic;
             }
 
-            public RewardInfo(int itemId, int rate, RewardType type)
+            public RewardInfo(int itemId, int rateOrCount, RewardType type)
             {
                 ItemId = itemId;
-                Rate = rate;
+                RateOrCount = rateOrCount;
                 Type = type;
             }
 
             public RewardInfo(Dictionary dictionary)
             {
                 ItemId = dictionary[IdKey].ToInteger();
-                Rate = dictionary[RateKey].ToInteger();
+                RateOrCount = dictionary[RateOrCountKey].ToInteger();
                 Type = dictionary.TryGetValue((Text)RewardTypeKey, out IValue value) &&
                        RewardType.TryParse((Text)value, out RewardType result)
                     ? result
@@ -75,7 +75,7 @@ namespace Nekoyume.TableData
             {
                 return Dictionary.Empty
                     .Add(IdKey, ItemId.Serialize())
-                    .Add(RateKey, Rate.Serialize())
+                    .Add(RateOrCountKey, RateOrCount.Serialize())
                     .Add(RewardTypeKey, Type.Serialize());
             }
         }

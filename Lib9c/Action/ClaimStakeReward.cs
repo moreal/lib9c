@@ -62,8 +62,8 @@ namespace Nekoyume.Action
                 var quantity = reward.Type switch
                 {
                     StakeRegularRewardSheet.RewardInfo.RewardType.Arithmetic =>
-                        stakedAmount.DivRem(currency * reward.Rate).Quotient,
-                    StakeRegularRewardSheet.RewardInfo.RewardType.Fixed => reward.Rate,
+                        stakedAmount.DivRem(currency * reward.RateOrCount).Quotient,
+                    StakeRegularRewardSheet.RewardInfo.RewardType.Fixed => reward.RateOrCount,
                     _ => throw new ArgumentOutOfRangeException()
                 };
 
