@@ -7,6 +7,7 @@ using Bencodex.Types;
 using Libplanet;
 using Libplanet.Action;
 using Libplanet.Assets;
+using Libplanet.Tx;
 using Nekoyume.Battle;
 using Nekoyume.Extensions;
 using Nekoyume.Helper;
@@ -85,15 +86,21 @@ namespace Nekoyume.Action
                 context.PreviousStates,
                 context.Signer,
                 context.BlockIndex,
-                context.Random);
+                context.Random,
+                context.EventLogs);
         }
 
         public IAccountStateDelta Execute(
             IAccountStateDelta states,
             Address signer,
             long blockIndex,
-            IRandom random)
+            IRandom random,
+            List<EventLog> eventLogs)
         {
+            eventLogs.Add(new EventLog("EVENT", new IValue[] {
+                (Text)"HELL",
+            }));
+
             var inventoryAddress = AvatarAddress.Derive(LegacyInventoryKey);
             var worldInformationAddress = AvatarAddress.Derive(LegacyWorldInformationKey);
             var questListAddress = AvatarAddress.Derive(LegacyQuestListKey);
@@ -110,6 +117,10 @@ namespace Nekoyume.Action
                     $"{addressesHex}playCount must be greater than 0. " +
                     $"current playCount : {PlayCount}");
             }
+
+            eventLogs.Add(new EventLog("EVENT", new IValue[] {
+                (Text)"HELL",
+            }));
 
             var sw = new Stopwatch();
             sw.Start();

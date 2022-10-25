@@ -1,5 +1,6 @@
 namespace Lib9c.Tests.Action
 {
+    using System.Collections.Generic;
     using System.Security.Cryptography;
     using Libplanet;
     using Libplanet.Action;
@@ -30,6 +31,8 @@ namespace Lib9c.Tests.Action
         public HashDigest<SHA256>? PreviousStateRootHash { get; set; }
 
         public bool BlockAction { get; }
+
+        public List<EventLog> EventLogs { get; }
 
         public bool IsNativeToken(Currency currency) => false;
 
