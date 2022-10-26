@@ -87,7 +87,7 @@ namespace Nekoyume.Action
                 context.Signer,
                 context.BlockIndex,
                 context.Random,
-                context.EventLogs);
+                context.EmitEvent);
         }
 
         public IAccountStateDelta Execute(
@@ -95,9 +95,9 @@ namespace Nekoyume.Action
             Address signer,
             long blockIndex,
             IRandom random,
-            List<EventLog> eventLogs)
+            System.Action<EventLog> emitEvent)
         {
-            eventLogs.Add(new EventLog("EVENT", new IValue[] {
+            emitEvent(new EventLog("EVENT", new IValue[] {
                 (Text)"HELL",
             }));
 
@@ -118,7 +118,7 @@ namespace Nekoyume.Action
                     $"current playCount : {PlayCount}");
             }
 
-            eventLogs.Add(new EventLog("EVENT", new IValue[] {
+            emitEvent(new EventLog("EVENT", new IValue[] {
                 (Text)"HELL",
             }));
 
