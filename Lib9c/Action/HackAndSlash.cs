@@ -87,7 +87,7 @@ namespace Nekoyume.Action
                 context.Signer,
                 context.BlockIndex,
                 context.Random,
-                context.EmitEvent);
+                context.PutLog);
         }
 
         public IAccountStateDelta Execute(
@@ -95,12 +95,8 @@ namespace Nekoyume.Action
             Address signer,
             long blockIndex,
             IRandom random,
-            System.Action<EventLog> emitEvent)
+            System.Action<string> putLog)
         {
-            emitEvent(new EventLog("EVENT", new IValue[] {
-                (Text)"HELL",
-            }));
-
             var inventoryAddress = AvatarAddress.Derive(LegacyInventoryKey);
             var worldInformationAddress = AvatarAddress.Derive(LegacyWorldInformationKey);
             var questListAddress = AvatarAddress.Derive(LegacyQuestListKey);
@@ -118,10 +114,6 @@ namespace Nekoyume.Action
                     $"current playCount : {PlayCount}");
             }
 
-            emitEvent(new EventLog("EVENT", new IValue[] {
-                (Text)"HELL",
-            }));
-
             var sw = new Stopwatch();
             sw.Start();
             if (!states.TryGetAvatarStateV2(signer, AvatarAddress, out AvatarState avatarState, out _))
@@ -131,7 +123,7 @@ namespace Nekoyume.Action
             }
 
             sw.Stop();
-            Log.Verbose("{AddressesHex}HAS Get AvatarState: {Elapsed}", addressesHex, sw.Elapsed);
+            putLog($"{addressesHex}HAS Get AvatarState: {sw.Elapsed}");
 
             sw.Restart();
             // FIXME Delete this check next hard fork.
@@ -186,7 +178,7 @@ namespace Nekoyume.Action
                         typeof(StakeActionPointCoefficientSheet),
                     });
             sw.Stop();
-            Log.Verbose("{AddressesHex}HAS Get Sheets: {Elapsed}", addressesHex, sw.Elapsed);
+            putLog($"{addressesHex}HAS Get Sheets: {sw.Elapsed}");
 
             sw.Restart();
             var stakingLevel = 0;
@@ -200,7 +192,7 @@ namespace Nekoyume.Action
             }
 
             sw.Stop();
-            Log.Verbose("{AddressesHex}HAS Check StakeState: {Elapsed}", addressesHex, sw.Elapsed);
+            putLog($"{addressesHex}HAS Check StakeState: {sw.Elapsed}");
 
             // Validate about avatar state.
             Validator.ValidateForHackAndSlash(avatarState,
@@ -234,11 +226,15 @@ namespace Nekoyume.Action
             avatarState.EquipItems(items);
             sw.Stop();
             Log.Verbose("{AddressesHex}HAS Unequip items: {Elapsed}", addressesHex, sw.Elapsed);
+            putLog($"{addressesHex}HAS Unequip items: {sw.Elapsed}");
+            putLog($"{addressesHex}HAS Unequip items: {sw.Elapsed}");
 
             sw.Restart();
             var questSheet = sheets.GetQuestSheet();
             sw.Stop();
             Log.Verbose("{AddressesHex}HAS GetQuestSheet: {Elapsed}", addressesHex, sw.Elapsed);
+            putLog($"{addressesHex}HAS GetQuestSheet: {sw.Elapsed}");
+            putLog($"{addressesHex}HAS GetQuestSheet: {sw.Elapsed}");
 
             // Update QuestList only when QuestSheet.Count is greater than QuestList.Count
             var questList = avatarState.questList;
@@ -252,6 +248,8 @@ namespace Nekoyume.Action
                     sheets.GetSheet<EquipmentItemRecipeSheet>());
                 sw.Stop();
                 Log.Verbose("{AddressesHex}HAS Update QuestList: {Elapsed}", addressesHex, sw.Elapsed);
+                putLog($"{addressesHex}HAS Update QuestList: {sw.Elapsed}");
+                putLog($"{addressesHex}HAS Update QuestList: {sw.Elapsed}");
             }
 
             sw.Restart();
@@ -291,6 +289,8 @@ namespace Nekoyume.Action
 
             sw.Stop();
             Log.Verbose("{AddressesHex}HAS Get skillState : {Elapsed}", addressesHex, sw.Elapsed);
+            putLog($"{addressesHex}HAS Get skillState : {sw.Elapsed}");
+            putLog($"{addressesHex}HAS Get skillState : {sw.Elapsed}");
 
             sw.Restart();
             var worldSheet = sheets.GetSheet<WorldSheet>();
@@ -325,11 +325,14 @@ namespace Nekoyume.Action
                     StageSimulator.GetWaveRewards(random, stageRow, materialItemSheet));
                 sw.Stop();
                 Log.Verbose("{AddressesHex}HAS Initialize Simulator: {Elapsed}", addressesHex, sw.Elapsed);
+                putLog($"{addressesHex}HAS Initialize Simulator: {sw.Elapsed}");
+                putLog($"{addressesHex}HAS Get skillState : {sw.Elapsed}");
 
                 sw.Restart();
                 simulator.Simulate();
                 sw.Stop();
                 Log.Verbose("{AddressesHex}HAS Simulator.Simulate(): {Elapsed}", addressesHex, sw.Elapsed);
+                putLog($"{addressesHex}HAS Simulator.Simulate(): {sw.Elapsed}");
 
                 sw.Restart();
                 if (simulator.Log.IsClear)
@@ -343,6 +346,7 @@ namespace Nekoyume.Action
                     );
                     sw.Stop();
                     Log.Verbose("{AddressesHex}HAS ClearStage: {Elapsed}", addressesHex, sw.Elapsed);
+                    putLog($"{addressesHex}HAS ClearStage: {sw.Elapsed}");
                 }
 
                 sw.Restart();
@@ -374,6 +378,7 @@ namespace Nekoyume.Action
             avatarState.mailBox.CleanUp();
             sw.Stop();
             Log.Verbose("{AddressesHex}HAS Update AvatarState: {Elapsed}", addressesHex, sw.Elapsed);
+            putLog($"{addressesHex}HAS Update AvatarState: {sw.Elapsed}");
 
             sw.Restart();
             if (isNotClearedStage)
@@ -396,6 +401,7 @@ namespace Nekoyume.Action
                 .SetState(questListAddress, avatarState.questList.Serialize());
             sw.Stop();
             Log.Verbose("{AddressesHex}HAS Set States: {Elapsed}", addressesHex, sw.Elapsed);
+            putLog($"{addressesHex}HAS Set States: {sw.Elapsed}");
 
             var totalElapsed = DateTimeOffset.UtcNow - started;
             Log.Debug("{AddressesHex}HAS Total Executed Time: {Elapsed}", addressesHex, totalElapsed);

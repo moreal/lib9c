@@ -32,7 +32,7 @@ namespace Lib9c.Tests.Action
 
         public bool BlockAction { get; }
 
-        public System.Action<EventLog> EmitEvent { get; }
+        public System.Action<string> PutLog { get; }
 
         public bool IsNativeToken(Currency currency) => false;
 
