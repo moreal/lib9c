@@ -121,6 +121,7 @@ namespace Nekoyume.Action
 
             sw.Stop();
             Log.Verbose("{AddressesHex}Sell IsStageCleared: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}Sell IsStageCleared: {sw.Elapsed}");
             sw.Restart();
 
             Order order = OrderFactory.Create(context.Signer, sellerAvatarAddress, orderId, price,
@@ -163,6 +164,7 @@ namespace Nekoyume.Action
                 .SetState(sellerAvatarAddress, avatarState.SerializeV2());
             sw.Stop();
             Log.Verbose("{AddressesHex}Sell Set AvatarState: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}Sell Set AvatarState: {sw.Elapsed}");
             sw.Restart();
 
             states = states
@@ -172,6 +174,7 @@ namespace Nekoyume.Action
             sw.Stop();
             var ended = DateTimeOffset.UtcNow;
             Log.Verbose("{AddressesHex}Sell Set ShopState: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}Sell Set ShopState: {sw.Elapsed}");
             Log.Debug(
                 "{AddressesHex}Sell Total Executed Time: {Elapsed}",
                 addressesHex,

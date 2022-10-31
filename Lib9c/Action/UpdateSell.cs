@@ -74,6 +74,7 @@ namespace Nekoyume.Action
             }
             sw.Stop();
             Log.Verbose("{AddressesHex} Sell Get AgentAvatarStates: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex} Sell Get AgentAvatarStates: {sw.Elapsed}");
             sw.Restart();
             if (!avatarState.worldInformation.IsStageCleared(GameConfig.RequireClearedStageLevel.ActionsInShop))
             {
@@ -85,6 +86,7 @@ namespace Nekoyume.Action
             }
             sw.Stop();
             Log.Verbose("{AddressesHex} UpdateSell IsStageCleared: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex} UpdateSell IsStageCleared: {sw.Elapsed}");
 
             avatarState.updatedAt = context.BlockIndex;
             avatarState.blockIndex = context.BlockIndex;
@@ -125,6 +127,7 @@ namespace Nekoyume.Action
 
                 sw.Stop();
                 Log.Verbose("{AddressesHex} UpdateSell Sell Cancel Get ShopState: {Elapsed}", addressesHex, sw.Elapsed);
+                context.PutLog($"{addressesHex} UpdateSell Sell Cancel Get ShopState: {sw.Elapsed}");
                 sw.Restart();
                 if (!states.TryGetState(Order.DeriveAddress(updateSellInfo.orderId), out Dictionary orderDict))
                 {
@@ -158,6 +161,7 @@ namespace Nekoyume.Action
                         : new ShardedShopStateV2(updateSellShopAddress);
 
                 Log.Verbose("{AddressesHex} UpdateSell Get ShardedShopState: {Elapsed}", addressesHex, sw.Elapsed);
+                context.PutLog($"{addressesHex} UpdateSell Get ShardedShopState: {sw.Elapsed}");
                 sw.Restart();
                 var newOrder = OrderFactory.Create(
                     context.Signer,
@@ -184,6 +188,7 @@ namespace Nekoyume.Action
                     .SetState(updateSellShopAddress, updateSellShopState.Serialize());
                 sw.Stop();
                 Log.Verbose("{AddressesHex} UpdateSell Set ShopState: {Elapsed}", addressesHex, sw.Elapsed);
+                context.PutLog($"{addressesHex} UpdateSell Set ShopState: {sw.Elapsed}");
             }
 
             sw.Restart();
@@ -194,6 +199,7 @@ namespace Nekoyume.Action
                 .SetState(digestListAddress, digestList.Serialize());
             sw.Stop();
             Log.Verbose("{AddressesHex} UpdateSell Set AvatarState: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex} UpdateSell Set AvatarState: {sw.Elapsed}");
 
             var ended = DateTimeOffset.UtcNow;
             Log.Debug("{AddressesHex} UpdateSell Total Executed Time: {Elapsed}", addressesHex, ended - started);

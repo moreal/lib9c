@@ -182,6 +182,7 @@ namespace Nekoyume.Action
             }
             sw.Stop();
             Log.Verbose("{AddressesHex}ItemEnhancement Get Equipment: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}ItemEnhancement Get Equipment: {sw.Elapsed}");
 
             sw.Restart();
 
@@ -261,6 +262,7 @@ namespace Nekoyume.Action
             }
             sw.Stop();
             Log.Verbose("{AddressesHex}ItemEnhancement Get Material: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}ItemEnhancement Get Material: {sw.Elapsed}");
 
             sw.Restart();
             // Subtract required action point
@@ -342,6 +344,7 @@ namespace Nekoyume.Action
             avatarState.inventory.RemoveNonFungibleItem(materialId);
             sw.Stop();
             Log.Verbose("{AddressesHex}ItemEnhancement Upgrade Equipment: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}ItemEnhancement Upgrade Equipment: {sw.Elapsed}");
 
             // Send scheduled mail
             var result = new ResultModel
@@ -377,6 +380,7 @@ namespace Nekoyume.Action
                 .SetState(avatarAddress, avatarState.SerializeV2());
             sw.Stop();
             Log.Verbose("{AddressesHex}ItemEnhancement Set AvatarState: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}ItemEnhancement Set AvatarState: {sw.Elapsed}");
             var ended = DateTimeOffset.UtcNow;
             Log.Debug("{AddressesHex}ItemEnhancement Total Executed Time: {Elapsed}", addressesHex, ended - started);
             return states.SetState(slotAddress, slotState.Serialize());

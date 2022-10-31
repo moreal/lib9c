@@ -263,6 +263,7 @@ namespace Nekoyume.Action
             }
             sw.Stop();
             Log.Verbose("{AddressesHex}BuyMultiple Get Buyer AgentAvatarStates: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}BuyMultiple Get Buyer AgentAvatarStates: {sw.Elapsed}");
             sw.Restart();
 
             if (!buyerAvatarState.worldInformation.IsStageCleared(GameConfig.RequireClearedStageLevel.ActionsInShop))
@@ -281,6 +282,7 @@ namespace Nekoyume.Action
 
             sw.Stop();
             Log.Verbose("{AddressesHex}BuyMultiple Get ShopState: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}BuyMultiple Get ShopState: {sw.Elapsed}");
 
             var sellerAvatarAddressesString = string.Join(", ", sellerAvatarAddresses.Select(a => a.ToString()));
 
@@ -344,6 +346,7 @@ namespace Nekoyume.Action
                 }
                 sw.Stop();
                 Log.Verbose("{AddressesHex}BuyMultiple Get Item: {Elapsed}", addressesHex, sw.Elapsed);
+                context.PutLog($"{addressesHex}BuyMultiple Get Item: {sw.Elapsed}");
 
                 if (0 < shopItem.ExpiredBlockIndex && shopItem.ExpiredBlockIndex < context.BlockIndex)
                 {
@@ -416,6 +419,7 @@ namespace Nekoyume.Action
                 states = states.SetState(productInfo.sellerAvatarAddress, sellerAvatarState.Serialize());
                 sw.Stop();
                 Log.Verbose("{AddressesHex}BuyMultiple Set Seller AvatarState: {Elapsed}", addressesHex, sw.Elapsed);
+                context.PutLog($"{addressesHex}BuyMultiple Set Seller AvatarState: {sw.Elapsed}");
             }
 
             buyerResult.purchaseResults = purchaseResults;
@@ -430,12 +434,14 @@ namespace Nekoyume.Action
             states = states.SetState(buyerAvatarAddress, buyerAvatarState.Serialize());
             sw.Stop();
             Log.Verbose("{AddressesHex}BuyMultiple Set Buyer AvatarState: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}BuyMultiple Set Buyer AvatarState: {sw.Elapsed}");
 
             sw.Restart();
             states = states.SetState(ShopState.Address, shopStateDict);
             sw.Stop();
             var ended = DateTimeOffset.UtcNow;
             Log.Verbose("{AddressesHex}BuyMultiple Set ShopState: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}BuyMultiple Set ShopState: {sw.Elapsed}");
             Log.Debug("{AddressesHex}BuyMultiple Total Executed Time: {Elapsed}", addressesHex, ended - started);
 
             return states;

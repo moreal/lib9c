@@ -122,6 +122,7 @@ namespace Nekoyume.Action
             }
             sw.Stop();
             Log.Verbose("{AddressesHex}CreateAvatar Get AgentAvatarStates: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}CreateAvatar Get AgentAvatarStates: {sw.Elapsed}");
             sw.Restart();
 
             Log.Verbose("{AddressesHex}Execute CreateAvatar; player: {AvatarAddress}", addressesHex, avatarAddress);
@@ -151,6 +152,7 @@ namespace Nekoyume.Action
 
             sw.Stop();
             Log.Verbose("{AddressesHex}CreateAvatar CreateAvatarState: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}CreateAvatar CreateAvatarState: {sw.Elapsed}");
             var ended = DateTimeOffset.UtcNow;
             Log.Debug("{AddressesHex}CreateAvatar Total Executed Time: {Elapsed}", addressesHex, ended - started);
             return states

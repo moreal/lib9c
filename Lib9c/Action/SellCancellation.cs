@@ -115,6 +115,7 @@ namespace Nekoyume.Action
 
             sw.Stop();
             Log.Verbose("{AddressesHex}Sell Cancel Get AgentAvatarStates: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}Sell Cancel Get AgentAvatarStates: {sw.Elapsed}");
             sw.Restart();
 
             if (!avatarState.worldInformation.IsStageCleared(GameConfig.RequireClearedStageLevel.ActionsInShop))
@@ -131,6 +132,7 @@ namespace Nekoyume.Action
 
             sw.Stop();
             Log.Verbose("{AddressesHex}Sell Cancel Get ShopState: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}Sell Cancel Get ShopState: {sw.Elapsed}");
             sw.Restart();
 
             avatarState.updatedAt = context.BlockIndex;
@@ -182,6 +184,7 @@ namespace Nekoyume.Action
 
             sw.Stop();
             Log.Verbose("{AddressesHex}Sell Cancel Update AvatarState: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}Sell Cancel Update AvatarState: {sw.Elapsed}");
             sw.Restart();
 
             states = states
@@ -193,11 +196,13 @@ namespace Nekoyume.Action
                 .SetState(sellerAvatarAddress, avatarState.SerializeV2());
             sw.Stop();
             Log.Verbose("{AddressesHex}Sell Cancel Set AvatarState: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}Sell Cancel Set AvatarState: {sw.Elapsed}");
             sw.Restart();
 
             sw.Stop();
             var ended = DateTimeOffset.UtcNow;
             Log.Verbose("{AddressesHex}Sell Cancel Set ShopState: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}Sell Cancel Set ShopState: {sw.Elapsed}");
             Log.Debug("{AddressesHex}Sell Cancel Total Executed Time: {Elapsed}", addressesHex, ended - started);
             return states;
         }

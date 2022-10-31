@@ -87,6 +87,7 @@ namespace Nekoyume.Action
 
             sw.Stop();
             Log.Verbose("{AddressesHex}Buy Get Buyer AgentAvatarStates: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}Buy Get Buyer AgentAvatarStates: {sw.Elapsed}");
             sw.Restart();
 
             if (!buyerAvatarState.worldInformation.IsStageCleared(GameConfig.RequireClearedStageLevel.ActionsInShop))
@@ -145,6 +146,7 @@ namespace Nekoyume.Action
 
                 sw.Stop();
                 Log.Verbose("{AddressesHex}Buy Get ShopState: {Elapsed}", addressesHex, sw.Elapsed);
+                context.PutLog($"{addressesHex}Buy Get ShopState: {sw.Elapsed}");
                 sw.Restart();
 
                 Log.Verbose(
@@ -162,6 +164,7 @@ namespace Nekoyume.Action
 
                 sw.Stop();
                 Log.Verbose("{AddressesHex}Buy Get Seller AgentAvatarStates: {Elapsed}", addressesHex, sw.Elapsed);
+                context.PutLog($"{addressesHex}Buy Get Seller AgentAvatarStates: {sw.Elapsed}");
                 sw.Restart();
 
                 if (!states.TryGetState(digestListAddress, out Dictionary rawDigestList))
@@ -188,6 +191,7 @@ namespace Nekoyume.Action
 
                 sw.Stop();
                 Log.Verbose("{AddressesHex}Buy Get Item: {Elapsed}", addressesHex, sw.Elapsed);
+                context.PutLog($"{addressesHex}Buy Get Item: {sw.Elapsed}");
                 sw.Restart();
 
                 // Check Balance.
@@ -277,10 +281,12 @@ namespace Nekoyume.Action
                     .SetState(sellerAvatarAddress, sellerAvatarState.SerializeV2());
                 sw.Stop();
                 Log.Verbose("{AddressesHex}Buy Set Seller AvatarState: {Elapsed}", addressesHex, sw.Elapsed);
+                context.PutLog($"{addressesHex}Buy Set Seller AvatarState: {sw.Elapsed}");
                 sw.Restart();
                 states = states.SetState(shardedShopAddress, shardedShopState.Serialize());
                 sw.Stop();
                 Log.Verbose("{AddressesHex}Buy Set ShopState: {Elapsed}", addressesHex, sw.Elapsed);
+                context.PutLog($"{addressesHex}Buy Set ShopState: {sw.Elapsed}");
             }
 
             buyerAvatarState.updatedAt = ctx.BlockIndex;
@@ -293,6 +299,7 @@ namespace Nekoyume.Action
                 .SetState(buyerAvatarAddress, buyerAvatarState.Serialize());
             sw.Stop();
             Log.Verbose("{AddressesHex}Buy Set Buyer AvatarState: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}Buy Set Buyer AvatarState: {sw.Elapsed}");
             sw.Restart();
 
             var ended = DateTimeOffset.UtcNow;

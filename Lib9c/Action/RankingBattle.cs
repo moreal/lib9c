@@ -92,6 +92,7 @@ namespace Nekoyume.Action
 
             sw.Stop();
             Log.Verbose("{AddressesHex}RankingBattle Get AgentAvatarStates: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}RankingBattle Get AgentAvatarStates: {sw.Elapsed}");
 
             sw.Restart();
             var sheets = states.GetSheetsV100291(
@@ -103,6 +104,7 @@ namespace Nekoyume.Action
                 });
             sw.Stop();
             Log.Verbose("{AddressesHex}HAS Get Sheets: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}HAS Get Sheets: {sw.Elapsed}");
             sw.Restart();
 
             var equipments = avatarState.ValidateEquipmentsV2(equipmentIds, context.BlockIndex);
@@ -110,6 +112,7 @@ namespace Nekoyume.Action
 
             sw.Stop();
             Log.Verbose("{AddressesHex}RankingBattle Validate Equipments: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}RankingBattle Validate Equipments: {sw.Elapsed}");
             sw.Restart();
 
             var items = equipmentIds.Concat(costumeIds);
@@ -125,6 +128,7 @@ namespace Nekoyume.Action
 
             sw.Stop();
             Log.Verbose("{AddressesHex}RankingBattle Equip Equipments: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}RankingBattle Equip Equipments: {sw.Elapsed}");
             sw.Restart();
 
             if (!avatarState.worldInformation.TryGetUnlockedWorldByStageClearedBlockIndex(out var world) ||
@@ -155,6 +159,7 @@ namespace Nekoyume.Action
 
             sw.Stop();
             Log.Verbose("{AddressesHex}RankingBattle Get Enemy AvatarState: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}RankingBattle Get Enemy AvatarState: {sw.Elapsed}");
             sw.Restart();
 
             var costumeStatSheet = sheets.GetSheet<CostumeStatSheet>();
@@ -252,6 +257,7 @@ namespace Nekoyume.Action
 
             sw.Stop();
             Log.Verbose("{AddressesHex}RankingBattle Serialize WeeklyArenaState: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}RankingBattle Serialize WeeklyArenaState: {sw.Elapsed}");
             sw.Restart();
 
             states = states
@@ -291,6 +297,7 @@ namespace Nekoyume.Action
 
             sw.Stop();
             Log.Verbose("{AddressesHex}RankingBattle Serialize AvatarState: {Elapsed}", addressesHex, sw.Elapsed);
+            context.PutLog($"{addressesHex}RankingBattle Serialize AvatarState: {sw.Elapsed}");
             sw.Restart();
 
             var ended = DateTimeOffset.UtcNow;
