@@ -20,13 +20,8 @@
     <ItemGroup>
       <ProjectReference Include="..\.Libplanet\Libplanet.RocksDBStore\Libplanet.RocksDBStore.csproj" />
       <ProjectReference Include="..\Lib9c\Lib9c.csproj" />
+      <ProjectReference Include="..\Lib9c.DevExtensions\Lib9c.DevExtensions.csproj" />
     </ItemGroup>
-
-  <ItemGroup Condition=" '$(Configuration)' != 'DevEx' ">
-    <!-- NOTE: Lib9c.DevExtensions project will be contained by Lib9c project
-             when the configuration is 'DevEx'.-->
-    <ProjectReference Include="..\Lib9c.DevExtensions\Lib9c.DevExtensions.csproj" />
-  </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="Cocona.Lite" Version="1.5.0" />
