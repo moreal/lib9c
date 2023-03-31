@@ -22,7 +22,8 @@ namespace Lib9c.Formatters
             {typeof(PublicKey), new PublicKeyFormatter()},
             {typeof(Dictionary), new BencodexFormatter<Dictionary>()},
             {typeof(IValue), new BencodexFormatter<IValue>()},
-            {typeof(NCAction), new NCActionFormatter()}
+            {typeof(NCAction), new NCActionFormatter()},
+            {typeof(IActionContext), new ActionContextFormatter()},
             // add more your own custom serializers.
         };
 
