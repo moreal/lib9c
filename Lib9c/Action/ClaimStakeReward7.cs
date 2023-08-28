@@ -22,9 +22,11 @@ namespace Nekoyume.Action
     /// Hard forked at https://github.com/planetarium/lib9c/pull/2083
     /// </summary>
     [ActionType(ActionTypeText)]
-    public class ClaimStakeReward : GameAction, IClaimStakeReward, IClaimStakeRewardV1
+    [ActionObsolete(ObsoleteIndex)]
+    public class ClaimStakeReward7 : GameAction, IClaimStakeReward, IClaimStakeRewardV1
     {
         private const string ActionTypeText = "claim_stake_reward7";
+        public const long ObsoleteIndex = ActionObsoleteConfig.V200070ObsoleteIndex;
 
         /// <summary>
         /// This is the version 1 of the stake reward sheet.
@@ -178,12 +180,12 @@ namespace Nekoyume.Action
 
         Address IClaimStakeRewardV1.AvatarAddress => AvatarAddress;
 
-        public ClaimStakeReward(Address avatarAddress) : this()
+        public ClaimStakeReward7(Address avatarAddress) : this()
         {
             AvatarAddress = avatarAddress;
         }
 
-        public ClaimStakeReward()
+        public ClaimStakeReward7()
         {
         }
 
@@ -199,6 +201,7 @@ namespace Nekoyume.Action
 
         public override IAccountStateDelta Execute(IActionContext context)
         {
+            CheckObsolete(ObsoleteIndex, context);
             context.UseGas(1);
             if (context.Rehearsal)
             {
