@@ -4,12 +4,10 @@ using System.Linq;
 using System.Numerics;
 using Bencodex.Types;
 using Lib9c.Abstractions;
-using Lib9c.Exceptions;
-using Lib9c.Model.Stake;
-using Lib9c.Model.State;
 using Libplanet.Action;
 using Libplanet.Action.State;
 using Nekoyume.Exceptions;
+using Nekoyume.Model.Stake;
 using Nekoyume.Model.State;
 using Nekoyume.TableData;
 using Nekoyume.TableData.Stake;
@@ -37,9 +35,10 @@ namespace Nekoyume.Action
         }
 
         protected override IImmutableDictionary<string, IValue> PlainValueInternal =>
-            ImmutableDictionary<string, IValue>.Empty.Add(AmountKey, (IValue) (Integer) Amount);
+            ImmutableDictionary<string, IValue>.Empty.Add(AmountKey, (IValue)(Integer)Amount);
 
-        protected override void LoadPlainValueInternal(IImmutableDictionary<string, IValue> plainValue)
+        protected override void LoadPlainValueInternal(
+            IImmutableDictionary<string, IValue> plainValue)
         {
             Amount = plainValue[AmountKey].ToBigInteger();
         }
@@ -79,7 +78,8 @@ namespace Nekoyume.Action
             Log.Debug("{AddressesHex}Stake exec started", addressesHex);
             var stakePolicySheet = states.GetSheet<StakePolicySheet>();
             var currentStakeRegularRewardSheetAddress =
-                Addresses.GetSheetAddress(stakePolicySheet[nameof(StakeRegularRewardSheet)].TableName);
+                Addresses.GetSheetAddress(stakePolicySheet[nameof(StakeRegularRewardSheet)]
+                    .TableName);
 
             var stakeRegularRewardSheet = states.GetSheet<StakeRegularRewardSheet>(
                 currentStakeRegularRewardSheetAddress);
@@ -103,66 +103,27 @@ namespace Nekoyume.Action
             }
 
             var latestStakeContract = new Contract(
-                stakeRegularFixedRewardSheetTableName: stakePolicySheet["StakeRegularFixedRewardSheet"].TableName,
-                stakeRegularRewardSheetTableName: stakePolicySheet["StakeRegularRewardSheet"].TableName
+                stakeRegularFixedRewardSheetTableName:
+                    stakePolicySheet["StakeRegularFixedRewardSheet"].TableName,
+                stakeRegularRewardSheetTableName:
+                    stakePolicySheet["StakeRegularRewardSheet"].TableName
             );
 
-            var stakeStateValue = states.GetState(stakeStateAddress);
-            StakeStateV2 stakeState;
-            if (stakeStateValue is null)
+            if (!states.TryGetStakeStateV2(context.Signer, out var stakeStateV2))
             {
                 if (Amount == 0)
                 {
                     throw new StateNullException(stakeStateAddress);
                 }
 
-                stakeState = new StakeStateV2(latestStakeContract, context.BlockIndex);
+                stakeStateV2 = new StakeStateV2(latestStakeContract, context.BlockIndex);
                 return states
-                    .SetState(
-                        stakeStateAddress,
-                        stakeState.Serialize())
+                    .SetState(stakeStateAddress, stakeStateV2.Serialize())
                     .TransferAsset(context, context.Signer, stakeStateAddress, targetStakeBalance);
             }
 
-            if (stakeStateValue is List list)
-            {
-                stakeState = new StakeStateV2(list);
-            }
-            else if (stakeStateValue is Dictionary dict)
-            {
-                var stakeStateV1 = new StakeState(dict);
-                string stakeRegularFixedRewardSheetTableName;
-                string stakeRegularRewardSheetTableName;
-                if (stakeStateV1.StartedBlockIndex < StakeState.StakeRewardSheetV2Index)
-                {
-                    stakeRegularFixedRewardSheetTableName = "StakeRegularFixedRewardSheet_V1";
-                    stakeRegularRewardSheetTableName = "StakeRegularRewardSheet_V1";
-                }
-                else if (stakeStateV1.StartedBlockIndex < StakeState.StakeRewardSheetV3Index)
-                {
-                    stakeRegularFixedRewardSheetTableName = "StakeRegularFixedRewardSheet_V2";
-                    stakeRegularRewardSheetTableName = "StakeRegularRewardSheet_V2";
-                }
-                else
-                {
-                    stakeRegularFixedRewardSheetTableName = "StakeRegularFixedRewardSheet_V3";
-                    stakeRegularRewardSheetTableName = "StakeRegularRewardSheet_V3";
-                }
-
-                stakeState = new StakeStateV2(stakeStateV1, new Contract(
-                    stakeRegularFixedRewardSheetTableName: stakeRegularFixedRewardSheetTableName,
-                    stakeRegularRewardSheetTableName: stakeRegularRewardSheetTableName
-                ));
-            }
-            else
-            {
-                throw new InvalidStateTypeException(
-                    $"invalid type of {nameof(stakeStateValue)}: {stakeStateValue.Kind}"
-                );
-            }
-
             // NOTE: Cannot anything if staking state is claimable.
-            if (stakeState.ClaimableBlockIndex >= context.BlockIndex)
+            if (stakeStateV2.ClaimableBlockIndex >= context.BlockIndex)
             {
                 throw new StakeExistingClaimableException();
             }
@@ -171,25 +132,26 @@ namespace Nekoyume.Action
             if (Amount == 0)
             {
                 // NOTE: Cannot cancel until lockup ends.
-                if (stakeState.CancellableBlockIndex > context.BlockIndex)
+                if (stakeStateV2.CancellableBlockIndex > context.BlockIndex)
                 {
                     throw new RequiredBlockIndexException();
                 }
-                
+
                 return states
                     .SetState(stakeStateAddress, Null.Value)
                     .TransferAsset(context, stakeStateAddress, context.Signer, stakedBalance);
             }
 
             // NOTE: Cannot re-contract with less balance when the staking is locked up.
-            if (stakeState.CancellableBlockIndex > context.BlockIndex &&
+            if (stakeStateV2.CancellableBlockIndex > context.BlockIndex &&
                 targetStakeBalance <= stakedBalance)
             {
                 throw new RequiredBlockIndexException();
             }
 
             var ended = DateTimeOffset.UtcNow;
-            Log.Debug("{AddressesHex}Stake Total Executed Time: {Elapsed}", addressesHex, ended - started);
+            Log.Debug("{AddressesHex}Stake Total Executed Time: {Elapsed}", addressesHex,
+                ended - started);
 
             // Stake with more or less amount.
             return states
@@ -197,7 +159,8 @@ namespace Nekoyume.Action
                 .TransferAsset(context, context.Signer, stakeStateAddress, targetStakeBalance)
                 .SetState(
                     stakeStateAddress,
-                    new StakeStateV2(latestStakeContract, stakeState.StartedBlockIndex).Serialize());
+                    new StakeStateV2(latestStakeContract, stakeStateV2.StartedBlockIndex)
+                        .Serialize());
         }
     }
 }

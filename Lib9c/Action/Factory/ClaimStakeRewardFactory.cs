@@ -11,36 +11,20 @@ namespace Nekoyume.Action.Factory
             long blockIndex,
             Address avatarAddress)
         {
-            if (blockIndex > ClaimStakeReward6.ObsoleteBlockIndex)
-            {
-                return new ClaimStakeReward7(avatarAddress);
-            }
-
-            if (blockIndex > ClaimStakeReward5.ObsoleteBlockIndex)
-            {
-                return new ClaimStakeReward6(avatarAddress);
-            }
-
-            if (blockIndex > ClaimStakeReward4.ObsoleteBlockIndex)
-            {
-                return new ClaimStakeReward5(avatarAddress);
-            }
-
-            if (blockIndex > ClaimStakeReward3.ObsoleteBlockIndex)
-            {
-                return new ClaimStakeReward4(avatarAddress);
-            }
-
-            if (blockIndex > ClaimStakeReward2.ObsoletedIndex)
-            {
-                return new ClaimStakeReward3(avatarAddress);
-            }
-
             // FIXME: This method should consider the starting block index of
             //        `claim_stake_reward2`. And if the `blockIndex` is less than
             //        the starting block index, it should throw an exception.
             // default: Version 2
-            return new ClaimStakeReward2(avatarAddress);
+            return blockIndex switch
+            {
+                > ClaimStakeReward7.ObsoleteBlockIndex => new ClaimStakeReward(avatarAddress),
+                > ClaimStakeReward6.ObsoleteBlockIndex => new ClaimStakeReward7(avatarAddress),
+                > ClaimStakeReward5.ObsoleteBlockIndex => new ClaimStakeReward6(avatarAddress),
+                > ClaimStakeReward4.ObsoleteBlockIndex => new ClaimStakeReward5(avatarAddress),
+                > ClaimStakeReward3.ObsoleteBlockIndex => new ClaimStakeReward4(avatarAddress),
+                > ClaimStakeReward2.ObsoletedIndex => new ClaimStakeReward3(avatarAddress),
+                _ => new ClaimStakeReward2(avatarAddress)
+            };
         }
 
         public static IClaimStakeReward CreateByVersion(
@@ -54,6 +38,7 @@ namespace Nekoyume.Action.Factory
             5 => new ClaimStakeReward5(avatarAddress),
             6 => new ClaimStakeReward6(avatarAddress),
             7 => new ClaimStakeReward7(avatarAddress),
+            8 => new ClaimStakeReward(avatarAddress),
             _ => throw new ArgumentOutOfRangeException(
                 $"Invalid version: {version}"),
         };
