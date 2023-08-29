@@ -162,15 +162,16 @@ namespace Nekoyume.Action
                 {
                     case StakeRegularRewardSheet.StakeRewardType.Item:
                     {
-                        var itemRow = itemSheet[reward.ItemId];
-                        var item = itemRow is MaterialItemSheet.Row materialRow
-                            ? ItemFactory.CreateTradableMaterial(materialRow)
-                            : ItemFactory.CreateItem(itemRow, context.Random);
                         var majorUnit = (int)rewardQuantityForSingleStep * rewardSteps;
                         if (majorUnit < 1)
                         {
                             continue;
                         }
+
+                        var itemRow = itemSheet[reward.ItemId];
+                        var item = itemRow is MaterialItemSheet.Row materialRow
+                            ? ItemFactory.CreateTradableMaterial(materialRow)
+                            : ItemFactory.CreateItem(itemRow, context.Random);
 
                         avatarState.inventory.AddItem(item, majorUnit);
                         break;
