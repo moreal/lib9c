@@ -6,10 +6,13 @@ using Nekoyume.Module.Guild;
 
 namespace Nekoyume.Action.Guild
 {
-    [ActionType("quit_guild")]
+    [ActionType(TypeIdentifier)]
     public class QuitGuild : ActionBase
     {
-        public override IValue PlainValue => Dictionary.Empty;
+        public const string TypeIdentifier = "quit_guild";
+
+        public override IValue PlainValue => Dictionary.Empty
+            .Add("type_id", TypeIdentifier);
 
         public override void LoadPlainValue(IValue plainValue)
         {

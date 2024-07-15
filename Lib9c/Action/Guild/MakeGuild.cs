@@ -6,14 +6,17 @@ using Nekoyume.Module.Guild;
 
 namespace Nekoyume.Action.Guild
 {
-    [ActionType("make_guild")]
+    [ActionType(TypeIdentifier)]
     public class MakeGuild : ActionBase
     {
-        public override IValue PlainValue => Null.Value;
+        public const string TypeIdentifier = "make_guild";
+
+        public override IValue PlainValue => Dictionary.Empty
+            .Add("type_id", TypeIdentifier);
 
         public override void LoadPlainValue(IValue plainValue)
         {
-            if (plainValue is not Null)
+            if (plainValue is not Dictionary)
             {
                 throw new InvalidCastException();
             }
