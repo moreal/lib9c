@@ -1251,17 +1251,7 @@ namespace Nekoyume.Model.State
             return items;
         }
 
-        public override IValue Serialize()
-        {
-            throw new NotSupportedException();
-        }
-
-        public override IValue SerializeV2()
-        {
-            throw new NotSupportedException();
-        }
-
-        public override IValue SerializeList()
+        public new IValue SerializeList()
         {
             // Migrated when serialized
             Version = CurrentVersion;
