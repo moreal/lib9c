@@ -1256,7 +1256,7 @@ namespace Nekoyume.Model.State
             // Migrated when serialized
             Version = CurrentVersion;
             return new List(
-                base.SerializeList(),
+                base.SerializeListBase(),
                 (Integer)Version,
                 (Text)name,
                 (Integer)characterId,

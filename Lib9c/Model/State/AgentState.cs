@@ -73,7 +73,7 @@ namespace Nekoyume.Model.State
         public new IValue SerializeList()
         {
             return new List(
-                base.SerializeList(),
+                base.SerializeListBase(),
                 (Integer)CurrentVersion,
 #pragma warning disable LAA1002
                 new Dictionary(
