@@ -2,8 +2,10 @@ name: publish docs
 
 on:
   push:
-    branches:
-      - main
+    branches-ignore:
+      - v*
+    tags-ignore:
+      - v*
 
 jobs:
   publish-docs:
@@ -24,11 +26,50 @@ jobs:
 
       - run: dotnet restore
       - run: dotnet tool restore
-      - run: dotnet docfx docs/docfx.json
+      - run: dotnet docfx -m pdf=false docs/docfx.json
+      # - name: Setup tmate session
+      #   uses: mxschmitt/action-tmate@v3
+
+      - name: update default docs
+        run: |
+          set -ev
+
+          echo "Test 1"
+          if [[ "${{ github.ref_name }}" =~ ^v ]]; then
+            echo "Test 2"
+            echo "Prevent tags started with 'v'" >&2
+            exit
+          fi
+
+          latest_version=$(git tag --sort -v:refname | grep -E -i '^[0-9]+\.[0-9]+\.[0-9]+' | head -n 1)
+          echo "Test 5 $latest_version"
+          if [[ "$latest_version" = "${{ github.ref_name }}" ]]; then
+            echo "Test 6"
+            index=$(cat docs/_site/index.html)
+            echo "Test 7"
+            {
+              echo -n "${index%</title>*}</title>"
+              echo "<meta http-equiv=\"refresh\" content=\"0;${{ github.ref_name }}/\">"
+              echo "<base href=\"${{ github.ref_name }}/\">"
+              echo -n "${index#*</title>}"
+            } > /tmp/gh-pages-root/index.html
+             echo "Test 8"
+             ls /tmp/gh-pages-root
+          fi
+        if: ${{ github.ref_type }} == 'tag'
+      - run: ls /tmp
 
       - name: deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/_site/
-          destination_dir: docs
+          destination_dir: ${{ github.ref_name }}
+      - name: deploy (index.html)
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: /tmp/gh-pages-root
+          destination_dir: .
+          keep_files: true
+        if: ${{ github.ref_type }} == 'tag'
