@@ -53,6 +53,11 @@ namespace Nekoyume.TableData
                     .Add("grade", Grade)
                     .Add("elemental_type", ElementalType.ToString());
 
+            public int Function()
+            {
+                return 1;
+            }
+
             public static Row Deserialize(Bencodex.Types.Dictionary serialized)
             {
                 return new Row(serialized);
