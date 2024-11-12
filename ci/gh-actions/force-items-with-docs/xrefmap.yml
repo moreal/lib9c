@@ -3837,6 +3837,49 @@ references:
   fullName.vb: Nekoyume.Action.AlreadyActivatedException.New
   nameWithType: AlreadyActivatedException.AlreadyActivatedException
   nameWithType.vb: AlreadyActivatedException.New
+- uid: Nekoyume.Action.AlreadyClaimedGiftsException
+  name: AlreadyClaimedGiftsException
+  href: api/Nekoyume.Action.AlreadyClaimedGiftsException.html
+  commentId: T:Nekoyume.Action.AlreadyClaimedGiftsException
+  fullName: Nekoyume.Action.AlreadyClaimedGiftsException
+  nameWithType: AlreadyClaimedGiftsException
+- uid: Nekoyume.Action.AlreadyClaimedGiftsException.#ctor
+  name: AlreadyClaimedGiftsException()
+  href: api/Nekoyume.Action.AlreadyClaimedGiftsException.html#Nekoyume_Action_AlreadyClaimedGiftsException__ctor
+  commentId: M:Nekoyume.Action.AlreadyClaimedGiftsException.#ctor
+  name.vb: New()
+  fullName: Nekoyume.Action.AlreadyClaimedGiftsException.AlreadyClaimedGiftsException()
+  fullName.vb: Nekoyume.Action.AlreadyClaimedGiftsException.New()
+  nameWithType: AlreadyClaimedGiftsException.AlreadyClaimedGiftsException()
+  nameWithType.vb: AlreadyClaimedGiftsException.New()
+- uid: Nekoyume.Action.AlreadyClaimedGiftsException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  name: AlreadyClaimedGiftsException(SerializationInfo, StreamingContext)
+  href: api/Nekoyume.Action.AlreadyClaimedGiftsException.html#Nekoyume_Action_AlreadyClaimedGiftsException__ctor_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_
+  commentId: M:Nekoyume.Action.AlreadyClaimedGiftsException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  name.vb: New(SerializationInfo, StreamingContext)
+  fullName: Nekoyume.Action.AlreadyClaimedGiftsException.AlreadyClaimedGiftsException(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  fullName.vb: Nekoyume.Action.AlreadyClaimedGiftsException.New(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  nameWithType: AlreadyClaimedGiftsException.AlreadyClaimedGiftsException(SerializationInfo, StreamingContext)
+  nameWithType.vb: AlreadyClaimedGiftsException.New(SerializationInfo, StreamingContext)
+- uid: Nekoyume.Action.AlreadyClaimedGiftsException.#ctor(System.String)
+  name: AlreadyClaimedGiftsException(string)
+  href: api/Nekoyume.Action.AlreadyClaimedGiftsException.html#Nekoyume_Action_AlreadyClaimedGiftsException__ctor_System_String_
+  commentId: M:Nekoyume.Action.AlreadyClaimedGiftsException.#ctor(System.String)
+  name.vb: New(String)
+  fullName: Nekoyume.Action.AlreadyClaimedGiftsException.AlreadyClaimedGiftsException(string)
+  fullName.vb: Nekoyume.Action.AlreadyClaimedGiftsException.New(String)
+  nameWithType: AlreadyClaimedGiftsException.AlreadyClaimedGiftsException(string)
+  nameWithType.vb: AlreadyClaimedGiftsException.New(String)
+- uid: Nekoyume.Action.AlreadyClaimedGiftsException.#ctor*
+  name: AlreadyClaimedGiftsException
+  href: api/Nekoyume.Action.AlreadyClaimedGiftsException.html#Nekoyume_Action_AlreadyClaimedGiftsException__ctor_
+  commentId: Overload:Nekoyume.Action.AlreadyClaimedGiftsException.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Nekoyume.Action.AlreadyClaimedGiftsException.AlreadyClaimedGiftsException
+  fullName.vb: Nekoyume.Action.AlreadyClaimedGiftsException.New
+  nameWithType: AlreadyClaimedGiftsException.AlreadyClaimedGiftsException
+  nameWithType.vb: AlreadyClaimedGiftsException.New
 - uid: Nekoyume.Action.AlreadyContractedException
   name: AlreadyContractedException
   href: api/Nekoyume.Action.AlreadyContractedException.html
@@ -6174,6 +6217,108 @@ references:
   commentId: F:Nekoyume.Action.ChargeActionPoint.avatarAddress
   fullName: Nekoyume.Action.ChargeActionPoint.avatarAddress
   nameWithType: ChargeActionPoint.avatarAddress
+- uid: Nekoyume.Action.ClaimGifts
+  name: ClaimGifts
+  href: api/Nekoyume.Action.ClaimGifts.html
+  commentId: T:Nekoyume.Action.ClaimGifts
+  fullName: Nekoyume.Action.ClaimGifts
+  nameWithType: ClaimGifts
+- uid: Nekoyume.Action.ClaimGifts.#ctor
+  name: ClaimGifts()
+  href: api/Nekoyume.Action.ClaimGifts.html#Nekoyume_Action_ClaimGifts__ctor
+  commentId: M:Nekoyume.Action.ClaimGifts.#ctor
+  name.vb: New()
+  fullName: Nekoyume.Action.ClaimGifts.ClaimGifts()
+  fullName.vb: Nekoyume.Action.ClaimGifts.New()
+  nameWithType: ClaimGifts.ClaimGifts()
+  nameWithType.vb: ClaimGifts.New()
+- uid: Nekoyume.Action.ClaimGifts.#ctor(Libplanet.Crypto.Address,System.Int32)
+  name: ClaimGifts(Address, int)
+  href: api/Nekoyume.Action.ClaimGifts.html#Nekoyume_Action_ClaimGifts__ctor_Libplanet_Crypto_Address_System_Int32_
+  commentId: M:Nekoyume.Action.ClaimGifts.#ctor(Libplanet.Crypto.Address,System.Int32)
+  name.vb: New(Address, Integer)
+  fullName: Nekoyume.Action.ClaimGifts.ClaimGifts(Libplanet.Crypto.Address, int)
+  fullName.vb: Nekoyume.Action.ClaimGifts.New(Libplanet.Crypto.Address, Integer)
+  nameWithType: ClaimGifts.ClaimGifts(Address, int)
+  nameWithType.vb: ClaimGifts.New(Address, Integer)
+- uid: Nekoyume.Action.ClaimGifts.#ctor*
+  name: ClaimGifts
+  href: api/Nekoyume.Action.ClaimGifts.html#Nekoyume_Action_ClaimGifts__ctor_
+  commentId: Overload:Nekoyume.Action.ClaimGifts.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Nekoyume.Action.ClaimGifts.ClaimGifts
+  fullName.vb: Nekoyume.Action.ClaimGifts.New
+  nameWithType: ClaimGifts.ClaimGifts
+  nameWithType.vb: ClaimGifts.New
+- uid: Nekoyume.Action.ClaimGifts.AvatarAddress
+  name: AvatarAddress
+  href: api/Nekoyume.Action.ClaimGifts.html#Nekoyume_Action_ClaimGifts_AvatarAddress
+  commentId: P:Nekoyume.Action.ClaimGifts.AvatarAddress
+  fullName: Nekoyume.Action.ClaimGifts.AvatarAddress
+  nameWithType: ClaimGifts.AvatarAddress
+- uid: Nekoyume.Action.ClaimGifts.AvatarAddress*
+  name: AvatarAddress
+  href: api/Nekoyume.Action.ClaimGifts.html#Nekoyume_Action_ClaimGifts_AvatarAddress_
+  commentId: Overload:Nekoyume.Action.ClaimGifts.AvatarAddress
+  isSpec: "True"
+  fullName: Nekoyume.Action.ClaimGifts.AvatarAddress
+  nameWithType: ClaimGifts.AvatarAddress
+- uid: Nekoyume.Action.ClaimGifts.Execute(Libplanet.Action.IActionContext)
+  name: Execute(IActionContext)
+  href: api/Nekoyume.Action.ClaimGifts.html#Nekoyume_Action_ClaimGifts_Execute_Libplanet_Action_IActionContext_
+  commentId: M:Nekoyume.Action.ClaimGifts.Execute(Libplanet.Action.IActionContext)
+  fullName: Nekoyume.Action.ClaimGifts.Execute(Libplanet.Action.IActionContext)
+  nameWithType: ClaimGifts.Execute(IActionContext)
+- uid: Nekoyume.Action.ClaimGifts.Execute*
+  name: Execute
+  href: api/Nekoyume.Action.ClaimGifts.html#Nekoyume_Action_ClaimGifts_Execute_
+  commentId: Overload:Nekoyume.Action.ClaimGifts.Execute
+  isSpec: "True"
+  fullName: Nekoyume.Action.ClaimGifts.Execute
+  nameWithType: ClaimGifts.Execute
+- uid: Nekoyume.Action.ClaimGifts.GiftId
+  name: GiftId
+  href: api/Nekoyume.Action.ClaimGifts.html#Nekoyume_Action_ClaimGifts_GiftId
+  commentId: P:Nekoyume.Action.ClaimGifts.GiftId
+  fullName: Nekoyume.Action.ClaimGifts.GiftId
+  nameWithType: ClaimGifts.GiftId
+- uid: Nekoyume.Action.ClaimGifts.GiftId*
+  name: GiftId
+  href: api/Nekoyume.Action.ClaimGifts.html#Nekoyume_Action_ClaimGifts_GiftId_
+  commentId: Overload:Nekoyume.Action.ClaimGifts.GiftId
+  isSpec: "True"
+  fullName: Nekoyume.Action.ClaimGifts.GiftId
+  nameWithType: ClaimGifts.GiftId
+- uid: Nekoyume.Action.ClaimGifts.LoadPlainValueInternal(System.Collections.Immutable.IImmutableDictionary{System.String,Bencodex.Types.IValue})
+  name: LoadPlainValueInternal(IImmutableDictionary<string, IValue>)
+  href: api/Nekoyume.Action.ClaimGifts.html#Nekoyume_Action_ClaimGifts_LoadPlainValueInternal_System_Collections_Immutable_IImmutableDictionary_System_String_Bencodex_Types_IValue__
+  commentId: M:Nekoyume.Action.ClaimGifts.LoadPlainValueInternal(System.Collections.Immutable.IImmutableDictionary{System.String,Bencodex.Types.IValue})
+  name.vb: LoadPlainValueInternal(IImmutableDictionary(Of String, IValue))
+  fullName: Nekoyume.Action.ClaimGifts.LoadPlainValueInternal(System.Collections.Immutable.IImmutableDictionary<string, Bencodex.Types.IValue>)
+  fullName.vb: Nekoyume.Action.ClaimGifts.LoadPlainValueInternal(System.Collections.Immutable.IImmutableDictionary(Of String, Bencodex.Types.IValue))
+  nameWithType: ClaimGifts.LoadPlainValueInternal(IImmutableDictionary<string, IValue>)
+  nameWithType.vb: ClaimGifts.LoadPlainValueInternal(IImmutableDictionary(Of String, IValue))
+- uid: Nekoyume.Action.ClaimGifts.LoadPlainValueInternal*
+  name: LoadPlainValueInternal
+  href: api/Nekoyume.Action.ClaimGifts.html#Nekoyume_Action_ClaimGifts_LoadPlainValueInternal_
+  commentId: Overload:Nekoyume.Action.ClaimGifts.LoadPlainValueInternal
+  isSpec: "True"
+  fullName: Nekoyume.Action.ClaimGifts.LoadPlainValueInternal
+  nameWithType: ClaimGifts.LoadPlainValueInternal
+- uid: Nekoyume.Action.ClaimGifts.PlainValueInternal
+  name: PlainValueInternal
+  href: api/Nekoyume.Action.ClaimGifts.html#Nekoyume_Action_ClaimGifts_PlainValueInternal
+  commentId: P:Nekoyume.Action.ClaimGifts.PlainValueInternal
+  fullName: Nekoyume.Action.ClaimGifts.PlainValueInternal
+  nameWithType: ClaimGifts.PlainValueInternal
+- uid: Nekoyume.Action.ClaimGifts.PlainValueInternal*
+  name: PlainValueInternal
+  href: api/Nekoyume.Action.ClaimGifts.html#Nekoyume_Action_ClaimGifts_PlainValueInternal_
+  commentId: Overload:Nekoyume.Action.ClaimGifts.PlainValueInternal
+  isSpec: "True"
+  fullName: Nekoyume.Action.ClaimGifts.PlainValueInternal
+  nameWithType: ClaimGifts.PlainValueInternal
 - uid: Nekoyume.Action.ClaimItems
   name: ClaimItems
   href: api/Nekoyume.Action.ClaimItems.html
@@ -6505,6 +6650,49 @@ references:
   isSpec: "True"
   fullName: Nekoyume.Action.ClaimWordBossKillReward.PlainValueInternal
   nameWithType: ClaimWordBossKillReward.PlainValueInternal
+- uid: Nekoyume.Action.ClaimableGiftsNotAvailableException
+  name: ClaimableGiftsNotAvailableException
+  href: api/Nekoyume.Action.ClaimableGiftsNotAvailableException.html
+  commentId: T:Nekoyume.Action.ClaimableGiftsNotAvailableException
+  fullName: Nekoyume.Action.ClaimableGiftsNotAvailableException
+  nameWithType: ClaimableGiftsNotAvailableException
+- uid: Nekoyume.Action.ClaimableGiftsNotAvailableException.#ctor
+  name: ClaimableGiftsNotAvailableException()
+  href: api/Nekoyume.Action.ClaimableGiftsNotAvailableException.html#Nekoyume_Action_ClaimableGiftsNotAvailableException__ctor
+  commentId: M:Nekoyume.Action.ClaimableGiftsNotAvailableException.#ctor
+  name.vb: New()
+  fullName: Nekoyume.Action.ClaimableGiftsNotAvailableException.ClaimableGiftsNotAvailableException()
+  fullName.vb: Nekoyume.Action.ClaimableGiftsNotAvailableException.New()
+  nameWithType: ClaimableGiftsNotAvailableException.ClaimableGiftsNotAvailableException()
+  nameWithType.vb: ClaimableGiftsNotAvailableException.New()
+- uid: Nekoyume.Action.ClaimableGiftsNotAvailableException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  name: ClaimableGiftsNotAvailableException(SerializationInfo, StreamingContext)
+  href: api/Nekoyume.Action.ClaimableGiftsNotAvailableException.html#Nekoyume_Action_ClaimableGiftsNotAvailableException__ctor_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_
+  commentId: M:Nekoyume.Action.ClaimableGiftsNotAvailableException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  name.vb: New(SerializationInfo, StreamingContext)
+  fullName: Nekoyume.Action.ClaimableGiftsNotAvailableException.ClaimableGiftsNotAvailableException(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  fullName.vb: Nekoyume.Action.ClaimableGiftsNotAvailableException.New(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  nameWithType: ClaimableGiftsNotAvailableException.ClaimableGiftsNotAvailableException(SerializationInfo, StreamingContext)
+  nameWithType.vb: ClaimableGiftsNotAvailableException.New(SerializationInfo, StreamingContext)
+- uid: Nekoyume.Action.ClaimableGiftsNotAvailableException.#ctor(System.String)
+  name: ClaimableGiftsNotAvailableException(string)
+  href: api/Nekoyume.Action.ClaimableGiftsNotAvailableException.html#Nekoyume_Action_ClaimableGiftsNotAvailableException__ctor_System_String_
+  commentId: M:Nekoyume.Action.ClaimableGiftsNotAvailableException.#ctor(System.String)
+  name.vb: New(String)
+  fullName: Nekoyume.Action.ClaimableGiftsNotAvailableException.ClaimableGiftsNotAvailableException(string)
+  fullName.vb: Nekoyume.Action.ClaimableGiftsNotAvailableException.New(String)
+  nameWithType: ClaimableGiftsNotAvailableException.ClaimableGiftsNotAvailableException(string)
+  nameWithType.vb: ClaimableGiftsNotAvailableException.New(String)
+- uid: Nekoyume.Action.ClaimableGiftsNotAvailableException.#ctor*
+  name: ClaimableGiftsNotAvailableException
+  href: api/Nekoyume.Action.ClaimableGiftsNotAvailableException.html#Nekoyume_Action_ClaimableGiftsNotAvailableException__ctor_
+  commentId: Overload:Nekoyume.Action.ClaimableGiftsNotAvailableException.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Nekoyume.Action.ClaimableGiftsNotAvailableException.ClaimableGiftsNotAvailableException
+  fullName.vb: Nekoyume.Action.ClaimableGiftsNotAvailableException.New
+  nameWithType: ClaimableGiftsNotAvailableException.ClaimableGiftsNotAvailableException
+  nameWithType.vb: ClaimableGiftsNotAvailableException.New
 - uid: Nekoyume.Action.CombinationConsumable
   name: CombinationConsumable
   href: api/Nekoyume.Action.CombinationConsumable.html
@@ -23189,6 +23377,12 @@ references:
   isSpec: "True"
   fullName: Nekoyume.Addresses.CheckInventoryAddrIsContainedInAgent
   nameWithType: Addresses.CheckInventoryAddrIsContainedInAgent
+- uid: Nekoyume.Addresses.ClaimedGiftIds
+  name: ClaimedGiftIds
+  href: api/Nekoyume.Addresses.html#Nekoyume_Addresses_ClaimedGiftIds
+  commentId: F:Nekoyume.Addresses.ClaimedGiftIds
+  fullName: Nekoyume.Addresses.ClaimedGiftIds
+  nameWithType: Addresses.ClaimedGiftIds
 - uid: Nekoyume.Addresses.Collection
   name: Collection
   href: api/Nekoyume.Addresses.html#Nekoyume_Addresses_Collection
@@ -66775,6 +66969,41 @@ references:
   isSpec: "True"
   fullName: Nekoyume.Module.DailyRewardModule.TryGetDailyRewardReceivedBlockIndex
   nameWithType: DailyRewardModule.TryGetDailyRewardReceivedBlockIndex
+- uid: Nekoyume.Module.GiftModule
+  name: GiftModule
+  href: api/Nekoyume.Module.GiftModule.html
+  commentId: T:Nekoyume.Module.GiftModule
+  fullName: Nekoyume.Module.GiftModule
+  nameWithType: GiftModule
+- uid: Nekoyume.Module.GiftModule.GetClaimedGifts(Libplanet.Action.State.IWorldState,Libplanet.Crypto.Address)
+  name: GetClaimedGifts(IWorldState, Address)
+  href: api/Nekoyume.Module.GiftModule.html#Nekoyume_Module_GiftModule_GetClaimedGifts_Libplanet_Action_State_IWorldState_Libplanet_Crypto_Address_
+  commentId: M:Nekoyume.Module.GiftModule.GetClaimedGifts(Libplanet.Action.State.IWorldState,Libplanet.Crypto.Address)
+  fullName: Nekoyume.Module.GiftModule.GetClaimedGifts(Libplanet.Action.State.IWorldState, Libplanet.Crypto.Address)
+  nameWithType: GiftModule.GetClaimedGifts(IWorldState, Address)
+- uid: Nekoyume.Module.GiftModule.GetClaimedGifts*
+  name: GetClaimedGifts
+  href: api/Nekoyume.Module.GiftModule.html#Nekoyume_Module_GiftModule_GetClaimedGifts_
+  commentId: Overload:Nekoyume.Module.GiftModule.GetClaimedGifts
+  isSpec: "True"
+  fullName: Nekoyume.Module.GiftModule.GetClaimedGifts
+  nameWithType: GiftModule.GetClaimedGifts
+- uid: Nekoyume.Module.GiftModule.SetClaimedGifts(Libplanet.Action.State.IWorld,Libplanet.Crypto.Address,System.Collections.Generic.List{System.Int32})
+  name: SetClaimedGifts(IWorld, Address, List<int>)
+  href: api/Nekoyume.Module.GiftModule.html#Nekoyume_Module_GiftModule_SetClaimedGifts_Libplanet_Action_State_IWorld_Libplanet_Crypto_Address_System_Collections_Generic_List_System_Int32__
+  commentId: M:Nekoyume.Module.GiftModule.SetClaimedGifts(Libplanet.Action.State.IWorld,Libplanet.Crypto.Address,System.Collections.Generic.List{System.Int32})
+  name.vb: SetClaimedGifts(IWorld, Address, List(Of Integer))
+  fullName: Nekoyume.Module.GiftModule.SetClaimedGifts(Libplanet.Action.State.IWorld, Libplanet.Crypto.Address, System.Collections.Generic.List<int>)
+  fullName.vb: Nekoyume.Module.GiftModule.SetClaimedGifts(Libplanet.Action.State.IWorld, Libplanet.Crypto.Address, System.Collections.Generic.List(Of Integer))
+  nameWithType: GiftModule.SetClaimedGifts(IWorld, Address, List<int>)
+  nameWithType.vb: GiftModule.SetClaimedGifts(IWorld, Address, List(Of Integer))
+- uid: Nekoyume.Module.GiftModule.SetClaimedGifts*
+  name: SetClaimedGifts
+  href: api/Nekoyume.Module.GiftModule.html#Nekoyume_Module_GiftModule_SetClaimedGifts_
+  commentId: Overload:Nekoyume.Module.GiftModule.SetClaimedGifts
+  isSpec: "True"
+  fullName: Nekoyume.Module.GiftModule.SetClaimedGifts
+  nameWithType: GiftModule.SetClaimedGifts
 - uid: Nekoyume.Module.Guild
   name: Nekoyume.Module.Guild
   href: api/Nekoyume.Module.Guild.html
@@ -70823,6 +71052,122 @@ references:
   isSpec: "True"
   fullName: Nekoyume.TableData.CharacterSheetExtension.ToStats
   nameWithType: CharacterSheetExtension.ToStats
+- uid: Nekoyume.TableData.ClaimableGiftsSheet
+  name: ClaimableGiftsSheet
+  href: api/Nekoyume.TableData.ClaimableGiftsSheet.html
+  commentId: T:Nekoyume.TableData.ClaimableGiftsSheet
+  fullName: Nekoyume.TableData.ClaimableGiftsSheet
+  nameWithType: ClaimableGiftsSheet
+- uid: Nekoyume.TableData.ClaimableGiftsSheet.#ctor
+  name: ClaimableGiftsSheet()
+  href: api/Nekoyume.TableData.ClaimableGiftsSheet.html#Nekoyume_TableData_ClaimableGiftsSheet__ctor
+  commentId: M:Nekoyume.TableData.ClaimableGiftsSheet.#ctor
+  name.vb: New()
+  fullName: Nekoyume.TableData.ClaimableGiftsSheet.ClaimableGiftsSheet()
+  fullName.vb: Nekoyume.TableData.ClaimableGiftsSheet.New()
+  nameWithType: ClaimableGiftsSheet.ClaimableGiftsSheet()
+  nameWithType.vb: ClaimableGiftsSheet.New()
+- uid: Nekoyume.TableData.ClaimableGiftsSheet.#ctor*
+  name: ClaimableGiftsSheet
+  href: api/Nekoyume.TableData.ClaimableGiftsSheet.html#Nekoyume_TableData_ClaimableGiftsSheet__ctor_
+  commentId: Overload:Nekoyume.TableData.ClaimableGiftsSheet.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Nekoyume.TableData.ClaimableGiftsSheet.ClaimableGiftsSheet
+  fullName.vb: Nekoyume.TableData.ClaimableGiftsSheet.New
+  nameWithType: ClaimableGiftsSheet.ClaimableGiftsSheet
+  nameWithType.vb: ClaimableGiftsSheet.New
+- uid: Nekoyume.TableData.ClaimableGiftsSheet.Row
+  name: ClaimableGiftsSheet.Row
+  href: api/Nekoyume.TableData.ClaimableGiftsSheet.Row.html
+  commentId: T:Nekoyume.TableData.ClaimableGiftsSheet.Row
+  fullName: Nekoyume.TableData.ClaimableGiftsSheet.Row
+  nameWithType: ClaimableGiftsSheet.Row
+- uid: Nekoyume.TableData.ClaimableGiftsSheet.Row.EndedBlockIndex
+  name: EndedBlockIndex
+  href: api/Nekoyume.TableData.ClaimableGiftsSheet.Row.html#Nekoyume_TableData_ClaimableGiftsSheet_Row_EndedBlockIndex
+  commentId: F:Nekoyume.TableData.ClaimableGiftsSheet.Row.EndedBlockIndex
+  fullName: Nekoyume.TableData.ClaimableGiftsSheet.Row.EndedBlockIndex
+  nameWithType: ClaimableGiftsSheet.Row.EndedBlockIndex
+- uid: Nekoyume.TableData.ClaimableGiftsSheet.Row.Id
+  name: Id
+  href: api/Nekoyume.TableData.ClaimableGiftsSheet.Row.html#Nekoyume_TableData_ClaimableGiftsSheet_Row_Id
+  commentId: F:Nekoyume.TableData.ClaimableGiftsSheet.Row.Id
+  fullName: Nekoyume.TableData.ClaimableGiftsSheet.Row.Id
+  nameWithType: ClaimableGiftsSheet.Row.Id
+- uid: Nekoyume.TableData.ClaimableGiftsSheet.Row.Items
+  name: Items
+  href: api/Nekoyume.TableData.ClaimableGiftsSheet.Row.html#Nekoyume_TableData_ClaimableGiftsSheet_Row_Items
+  commentId: F:Nekoyume.TableData.ClaimableGiftsSheet.Row.Items
+  fullName: Nekoyume.TableData.ClaimableGiftsSheet.Row.Items
+  nameWithType: ClaimableGiftsSheet.Row.Items
+- uid: Nekoyume.TableData.ClaimableGiftsSheet.Row.Key
+  name: Key
+  href: api/Nekoyume.TableData.ClaimableGiftsSheet.Row.html#Nekoyume_TableData_ClaimableGiftsSheet_Row_Key
+  commentId: P:Nekoyume.TableData.ClaimableGiftsSheet.Row.Key
+  fullName: Nekoyume.TableData.ClaimableGiftsSheet.Row.Key
+  nameWithType: ClaimableGiftsSheet.Row.Key
+- uid: Nekoyume.TableData.ClaimableGiftsSheet.Row.Key*
+  name: Key
+  href: api/Nekoyume.TableData.ClaimableGiftsSheet.Row.html#Nekoyume_TableData_ClaimableGiftsSheet_Row_Key_
+  commentId: Overload:Nekoyume.TableData.ClaimableGiftsSheet.Row.Key
+  isSpec: "True"
+  fullName: Nekoyume.TableData.ClaimableGiftsSheet.Row.Key
+  nameWithType: ClaimableGiftsSheet.Row.Key
+- uid: Nekoyume.TableData.ClaimableGiftsSheet.Row.Set(System.Collections.Generic.IReadOnlyList{System.String})
+  name: Set(IReadOnlyList<string>)
+  href: api/Nekoyume.TableData.ClaimableGiftsSheet.Row.html#Nekoyume_TableData_ClaimableGiftsSheet_Row_Set_System_Collections_Generic_IReadOnlyList_System_String__
+  commentId: M:Nekoyume.TableData.ClaimableGiftsSheet.Row.Set(System.Collections.Generic.IReadOnlyList{System.String})
+  name.vb: Set(IReadOnlyList(Of String))
+  fullName: Nekoyume.TableData.ClaimableGiftsSheet.Row.Set(System.Collections.Generic.IReadOnlyList<string>)
+  fullName.vb: Nekoyume.TableData.ClaimableGiftsSheet.Row.Set(System.Collections.Generic.IReadOnlyList(Of String))
+  nameWithType: ClaimableGiftsSheet.Row.Set(IReadOnlyList<string>)
+  nameWithType.vb: ClaimableGiftsSheet.Row.Set(IReadOnlyList(Of String))
+- uid: Nekoyume.TableData.ClaimableGiftsSheet.Row.Set*
+  name: Set
+  href: api/Nekoyume.TableData.ClaimableGiftsSheet.Row.html#Nekoyume_TableData_ClaimableGiftsSheet_Row_Set_
+  commentId: Overload:Nekoyume.TableData.ClaimableGiftsSheet.Row.Set
+  isSpec: "True"
+  fullName: Nekoyume.TableData.ClaimableGiftsSheet.Row.Set
+  nameWithType: ClaimableGiftsSheet.Row.Set
+- uid: Nekoyume.TableData.ClaimableGiftsSheet.Row.StartedBlockIndex
+  name: StartedBlockIndex
+  href: api/Nekoyume.TableData.ClaimableGiftsSheet.Row.html#Nekoyume_TableData_ClaimableGiftsSheet_Row_StartedBlockIndex
+  commentId: F:Nekoyume.TableData.ClaimableGiftsSheet.Row.StartedBlockIndex
+  fullName: Nekoyume.TableData.ClaimableGiftsSheet.Row.StartedBlockIndex
+  nameWithType: ClaimableGiftsSheet.Row.StartedBlockIndex
+- uid: Nekoyume.TableData.ClaimableGiftsSheet.Row.Validate(System.Int64)
+  name: Validate(long)
+  href: api/Nekoyume.TableData.ClaimableGiftsSheet.Row.html#Nekoyume_TableData_ClaimableGiftsSheet_Row_Validate_System_Int64_
+  commentId: M:Nekoyume.TableData.ClaimableGiftsSheet.Row.Validate(System.Int64)
+  name.vb: Validate(Long)
+  fullName: Nekoyume.TableData.ClaimableGiftsSheet.Row.Validate(long)
+  fullName.vb: Nekoyume.TableData.ClaimableGiftsSheet.Row.Validate(Long)
+  nameWithType: ClaimableGiftsSheet.Row.Validate(long)
+  nameWithType.vb: ClaimableGiftsSheet.Row.Validate(Long)
+- uid: Nekoyume.TableData.ClaimableGiftsSheet.Row.Validate*
+  name: Validate
+  href: api/Nekoyume.TableData.ClaimableGiftsSheet.Row.html#Nekoyume_TableData_ClaimableGiftsSheet_Row_Validate_
+  commentId: Overload:Nekoyume.TableData.ClaimableGiftsSheet.Row.Validate
+  isSpec: "True"
+  fullName: Nekoyume.TableData.ClaimableGiftsSheet.Row.Validate
+  nameWithType: ClaimableGiftsSheet.Row.Validate
+- uid: Nekoyume.TableData.ClaimableGiftsSheet.TryFindRowByBlockIndex(System.Int64,Nekoyume.TableData.ClaimableGiftsSheet.Row@)
+  name: TryFindRowByBlockIndex(long, out Row)
+  href: api/Nekoyume.TableData.ClaimableGiftsSheet.html#Nekoyume_TableData_ClaimableGiftsSheet_TryFindRowByBlockIndex_System_Int64_Nekoyume_TableData_ClaimableGiftsSheet_Row__
+  commentId: M:Nekoyume.TableData.ClaimableGiftsSheet.TryFindRowByBlockIndex(System.Int64,Nekoyume.TableData.ClaimableGiftsSheet.Row@)
+  name.vb: TryFindRowByBlockIndex(Long, Row)
+  fullName: Nekoyume.TableData.ClaimableGiftsSheet.TryFindRowByBlockIndex(long, out Nekoyume.TableData.ClaimableGiftsSheet.Row)
+  fullName.vb: Nekoyume.TableData.ClaimableGiftsSheet.TryFindRowByBlockIndex(Long, Nekoyume.TableData.ClaimableGiftsSheet.Row)
+  nameWithType: ClaimableGiftsSheet.TryFindRowByBlockIndex(long, out ClaimableGiftsSheet.Row)
+  nameWithType.vb: ClaimableGiftsSheet.TryFindRowByBlockIndex(Long, ClaimableGiftsSheet.Row)
+- uid: Nekoyume.TableData.ClaimableGiftsSheet.TryFindRowByBlockIndex*
+  name: TryFindRowByBlockIndex
+  href: api/Nekoyume.TableData.ClaimableGiftsSheet.html#Nekoyume_TableData_ClaimableGiftsSheet_TryFindRowByBlockIndex_
+  commentId: Overload:Nekoyume.TableData.ClaimableGiftsSheet.TryFindRowByBlockIndex
+  isSpec: "True"
+  fullName: Nekoyume.TableData.ClaimableGiftsSheet.TryFindRowByBlockIndex
+  nameWithType: ClaimableGiftsSheet.TryFindRowByBlockIndex
 - uid: Nekoyume.TableData.CollectQuestSheet
   name: CollectQuestSheet
   href: api/Nekoyume.TableData.CollectQuestSheet.html
